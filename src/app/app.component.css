@@ -1,0 +1,10 @@
+:host {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  h1 {
+    font-size: 32px;
+  }
+}

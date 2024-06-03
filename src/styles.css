@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/styles/reset.css";
+@import "./assets/styles/normalizer.css";
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-info: #17a2b8;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  --color-light: #f8f9fa;
+  --color-dark: #343a40;
+  --color-white: #fff;
+}
