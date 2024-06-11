@@ -12,7 +12,7 @@ export class CatBreedHandlerService {
     return this.currentCatBreed;
   }
 
-  setSelectedCatBreed(catBreed: CatBreed) {
+  setSelectedCatBreed(catBreed: CatBreed | undefined) {
     this.currentCatBreed = catBreed;
   }
 }

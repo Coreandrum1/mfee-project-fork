@@ -42,6 +42,7 @@ export class CardComponent {
 
   onCloseForm() {
     this.closeForm();
+    this.catBreedService.setSelectedCatBreed(undefined);
   }
   openForm() {
     this.isFormOpen = true;
