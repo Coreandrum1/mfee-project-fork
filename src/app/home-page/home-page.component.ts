@@ -1,31 +1,23 @@
 import { Component } from '@angular/core';
+import { CardComponent } from '../card/card.component';
+import { CatBreed } from '../../assets/types';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   template: `
     <h2>Cat Breeds</h2>
     <article [className]="'content-area'">
       @for (catBreed of catBreeds; track $index) {
-      <div [className]="'content-card'">
-        <img [src]="catBreed.imageSrc" />
-        <div [className]="'content-description'">
-          <p>Breed: {{ catBreed.breed }}</p>
-          <p>Origin: {{ catBreed.origin }}</p>
-          <p>Coat Length Variations: {{ catBreed.coatLengthVariations }}</p>
-          <p>Coat Color Variations: {{ catBreed.coatColorVariations }}</p>
-          <p>Coat Shape Variations: {{ catBreed.coatShapeVariations }}</p>
-          <p>Life Expectancy: {{ catBreed.lifeExpectancy }}</p>
-        </div>
-      </div>
+      <app-card [catBreed]="catBreed"></app-card>
       }
     </article>
   `,
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
-  catBreeds = [
+  catBreeds: CatBreed[] = [
     {
       breed: 'American Bobtail',
       origin: 'United States',

@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
-import { AuthPageComponent } from './auth-page/auth-page.component';
 import { authGuard } from './auth.guard';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 export const routes: Routes = [
   {
@@ -18,8 +19,13 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    component: AuthPageComponent,
+    component: LoginFormComponent,
     title: 'Home Page',
+  },
+  {
+    path: 'register',
+    component: RegisterFormComponent,
+    title: 'Register Page',
   },
   // otherwise redirect to home
   { path: '**', redirectTo: '/home' },
