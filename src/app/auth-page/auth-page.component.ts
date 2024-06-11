@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
+import { LoginFormComponent } from '../login-form/login-form.component';
 
 @Component({
   selector: 'app-auth-page',
   standalone: true,
-  imports: [],
-  template: `
-    <p>
-      auth-page works!
-    </p>
-  `,
-  styleUrl: './auth-page.component.css'
+  imports: [LoginFormComponent],
+  template: ` <app-login-form></app-login-form> `,
+  styleUrl: './auth-page.component.css',
 })
-export class AuthPageComponent {
-
-}
+export class AuthPageComponent {}

@@ -1,0 +1,77 @@
+{
+  "catBreeds": [
+    {
+      "id": 1,
+      "name": "Persian",
+      "coatPattern": "Solid",
+      "coatLength": "Long",
+      "health": {
+        "commonIssues": ["Respiratory problems", "Dental issues"],
+        "lifeExpectancy": "12-17 years"
+      },
+      "locations": ["USA", "UK", "Iran"],
+      "temperament": ["Affectionate", "Quiet", "Gentle"],
+      "origin": "Iran",
+      "image": "https://www.tica.org/images/Breeds/American_Bobtail/American-Bobtail-Full-Body_.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Siamese",
+      "coatPattern": "Pointed",
+      "coatLength": "Short",
+      "health": {
+        "commonIssues": ["Respiratory problems", "Crossed eyes"],
+        "lifeExpectancy": "15-20 years"
+      },
+      "locations": ["Thailand", "USA", "UK"],
+      "temperament": ["Social", "Playful", "Vocal"],
+      "origin": "Thailand",
+      "image": "https://www.tica.org/images/Breeds/American_Bobtail/American-Bobtail-Full-Body_.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Maine Coon",
+      "coatPattern": "Tabby",
+      "coatLength": "Long",
+      "health": {
+        "commonIssues": ["Hip dysplasia", "Heart disease"],
+        "lifeExpectancy": "12-15 years"
+      },
+      "locations": ["USA", "Canada", "Europe"],
+      "temperament": ["Friendly", "Intelligent", "Gentle"],
+      "origin": "USA",
+      "image": "https://www.tica.org/images/Breeds/American_Bobtail/American-Bobtail-Full-Body_.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Bengal",
+      "coatPattern": "Spotted",
+      "coatLength": "Short",
+      "health": {
+        "commonIssues": [
+          "Hypertrophic cardiomyopathy",
+          "Progressive retinal atrophy"
+        ],
+        "lifeExpectancy": "12-16 years"
+      },
+      "locations": ["USA", "UK", "Australia"],
+      "temperament": ["Active", "Curious", "Social"],
+      "origin": "USA",
+      "image": "https://www.tica.org/images/Breeds/American_Bobtail/American-Bobtail-Full-Body_.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Sphynx",
+      "coatPattern": "Hairless",
+      "coatLength": "None",
+      "health": {
+        "commonIssues": ["Skin problems", "Dental issues"],
+        "lifeExpectancy": "8-14 years"
+      },
+      "locations": ["Canada", "USA", "Europe"],
+      "temperament": ["Affectionate", "Energetic", "Playful"],
+      "origin": "Canada",
+      "image": "https://www.tica.org/images/Breeds/American_Bobtail/American-Bobtail-Full-Body_.jpg"
+    }
+  ]
+}
