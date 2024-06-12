@@ -18,64 +18,53 @@ import { Router } from '@angular/router';
       <div>
         <label for="firstName">First Name:</label>
         <input id="firstName" formControlName="firstName" type="text" />
-        <div
-          *ngIf="
-            registrationForm.get('firstName')?.invalid &&
-            registrationForm.get('firstName')?.touched
-          "
-        >
-          <small *ngIf="registrationForm.get('firstName')?.errors?.['required']"
-            >First Name is required.</small
-          >
+        @if (registrationForm.get('firstName')?.invalid &&
+        registrationForm.get('firstName')?.touched) {
+        <div>
+          @if (registrationForm.get('firstName')?.errors?.['required']) {
+          <small>First Name is required.</small>
+          }
         </div>
+        }
         <label for="lastName">Last Name:</label>
         <input id="lastName" formControlName="lastName" type="text" />
-        <div
-          *ngIf="
-            registrationForm.get('lastName')?.invalid &&
-            registrationForm.get('lastName')?.touched
-          "
-        >
-          <small *ngIf="registrationForm.get('lastName')?.errors?.['required']"
-            >Last Name is required.</small
-          >
+        @if ( registrationForm.get('lastName')?.invalid &&
+        registrationForm.get('lastName')?.touched) {
+        <div>
+          @if (registrationForm.get('lastName')?.errors?.['required']) {
+          <small>Last Name is required.</small>
+          }
         </div>
+        }
       </div>
       <div>
         <label for="email">Email:</label>
         <input id="email" formControlName="email" type="email" />
-        <div
-          *ngIf="
-            registrationForm.get('email')?.invalid &&
-            registrationForm.get('email')?.touched
-          "
-        >
-          <small *ngIf="registrationForm.get('email')?.errors?.['required']"
-            >Email is required.</small
-          >
-          <small *ngIf="registrationForm.get('email')?.errors?.['email']"
-            >Invalid email address.</small
-          >
+        @if ( registrationForm.get('email')?.invalid &&
+        registrationForm.get('email')?.touched ) {
+
+        <div>
+          @if (registrationForm.get('email')?.errors?.['required']) {
+          <small>Email is required.</small>
+          } @if (registrationForm.get('email')?.errors?.['email']) {
+          <small>Invalid email address.</small>
+          }
         </div>
+        }
       </div>
       <div>
         <label for="password">Password:</label>
         <input id="password" formControlName="password" type="password" />
-        <div
-          *ngIf="
-            registrationForm.get('password')?.invalid &&
-            registrationForm.get('password')?.touched
-          "
-        >
-          <small *ngIf="registrationForm.get('password')?.errors?.['required']"
-            >Password is required.</small
-          >
-          <small
-            *ngIf="registrationForm.get('password')?.errors?.['minlength']"
-          >
-            Password must be at least 6 characters long.
-          </small>
+        @if (registrationForm.get('password')?.invalid &&
+        registrationForm.get('password')?.touched) {
+        <div>
+          @if (registrationForm.get('password')?.errors?.['required']) {
+          <small>Password is required.</small>
+          } @if (registrationForm.get('password')?.errors?.['minlength']) {
+          <small>Password must be at least 6 characters long.</small>
+          }
         </div>
+        }
       </div>
       <div>
         <label for="confirmPassword">Confirm Password:</label>
@@ -84,21 +73,17 @@ import { Router } from '@angular/router';
           formControlName="confirmPassword"
           type="password"
         />
-        <div
-          *ngIf="
-            registrationForm.get('confirmPassword')?.invalid &&
-            registrationForm.get('confirmPassword')?.touched
-          "
-        >
-          <small
-            *ngIf="registrationForm.get('confirmPassword')?.errors?.['required']"
-            >Confirmation is required.</small
-          >
-          <small
-            *ngIf="registrationForm.get('confirmPassword')?.errors?.['mismatch']"
-            >Passwords must match.</small
-          >
+        @if (registrationForm.get('confirmPassword')?.invalid &&
+        registrationForm.get('confirmPassword')?.touched) {
+        <div>
+          @if (registrationForm.get('confirmPassword')?.errors?.['required']) {
+          <small>Confirmation is required.</small>
+          } @if (registrationForm.get('confirmPassword')?.errors?.['mismatch'])
+          {
+          <small>Passwords must match.</small>
+          }
         </div>
+        }
       </div>
       <button type="submit" [disabled]="registrationForm.invalid">
         Register
