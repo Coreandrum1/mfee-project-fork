@@ -7,12 +7,12 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   template: `
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div>
@@ -49,6 +49,7 @@ import { Router } from '@angular/router';
         </div>
       </div>
       <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      <p>Don't have an account? <a [routerLink]="'/register'">Sign up</a></p>
     </form>
   `,
   styleUrls: ['./login-form.component.css'],

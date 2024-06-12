@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -13,6 +15,32 @@ import {
   imports: [ReactiveFormsModule, CommonModule],
   template: `
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="firstName">First Name:</label>
+        <input id="firstName" formControlName="firstName" type="text" />
+        <div
+          *ngIf="
+            registrationForm.get('firstName')?.invalid &&
+            registrationForm.get('firstName')?.touched
+          "
+        >
+          <small *ngIf="registrationForm.get('firstName')?.errors?.['required']"
+            >First Name is required.</small
+          >
+        </div>
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" formControlName="lastName" type="text" />
+        <div
+          *ngIf="
+            registrationForm.get('lastName')?.invalid &&
+            registrationForm.get('lastName')?.touched
+          "
+        >
+          <small *ngIf="registrationForm.get('lastName')?.errors?.['required']"
+            >Last Name is required.</small
+          >
+        </div>
+      </div>
       <div>
         <label for="email">Email:</label>
         <input id="email" formControlName="email" type="email" />
@@ -81,6 +109,8 @@ import {
 })
 export class RegisterFormComponent {
   registrationForm: FormGroup;
+  authService = inject(AuthService);
+  router = inject(Router);
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group(
@@ -88,6 +118,8 @@ export class RegisterFormComponent {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
       },
       { validator: this.passwordMatchValidator }
     );
@@ -103,10 +135,19 @@ export class RegisterFormComponent {
       : { mismatch: true };
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.registrationForm.valid) {
-      console.log(this.registrationForm.value);
-      // Handle the registration logic here
+      const response = await this.authService.register({
+        id: crypto.randomUUID(),
+        email: this.registrationForm.value.email,
+        password: this.registrationForm.value.password,
+        firstName: this.registrationForm.value.firstName,
+        lastName: this.registrationForm.value.lastName,
+      });
+
+      if (response) {
+        this.router.navigate(['/home']);
+      }
     }
   }
 }

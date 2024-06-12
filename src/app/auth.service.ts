@@ -23,6 +23,29 @@ export class AuthService {
     return null;
   }
 
+  async register(userSent: User): Promise<any> {
+    const users = await fetch(`${this.API_URL}`);
+    const usersList = (await users.json()) ?? [];
+    const user = usersList.find((u: User) => {
+      return u.email === userSent.email;
+    });
+    if (user) {
+      return null;
+    }
+
+    const res = await fetch(`${this.API_URL}`, {
+      method: 'POST',
+      body: JSON.stringify(userSent),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const newUserList = (await res.json()) ?? [];
+    console.log(newUserList);
+    localStorage.setItem('currentUser', newUserList);
+    return newUserList;
+  }
+
   logout(): void {
     localStorage.removeItem('currentUser');
   }
