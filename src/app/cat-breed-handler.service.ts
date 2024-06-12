@@ -8,6 +8,10 @@ export class CatBreedHandlerService {
   currentCatBreed: CatBreed | undefined;
   constructor() {}
 
+  updateCatBreed(catBreed: CatBreed) {
+    this.currentCatBreed = catBreed;
+  }
+
   getSelectedCatBreed(): CatBreed | undefined {
     return this.currentCatBreed;
   }

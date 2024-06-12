@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { CatBreed } from '../../assets/types';
+import { CatBreedHandlerService } from '../cat-breed-handler.service';
+import { OverlayFormService } from '../overlay-form.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,6 +10,7 @@ import { CatBreed } from '../../assets/types';
   imports: [CardComponent],
   template: `
     <h2>Cat Breeds</h2>
+    <button (click)="addNewCatBreed()">Add New Cat Breed</button>
     <article [className]="'content-area'">
       @for (catBreed of catBreeds; track $index) {
       <app-card [catBreed]="catBreed"></app-card>
@@ -17,6 +20,9 @@ import { CatBreed } from '../../assets/types';
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
+  catBreedService = inject(CatBreedHandlerService);
+  formService = inject(OverlayFormService);
+
   catBreeds: CatBreed[] = [
     {
       breed: 'American Bobtail',
@@ -39,4 +45,9 @@ export class HomePageComponent {
         'https://www.tiendanimal.es/articulos/wp-content/uploads/2022/05/American-Shorthair-1200x900.jpg',
     },
   ];
+
+  addNewCatBreed() {
+    this.catBreedService.setSelectedCatBreed(undefined);
+    this.formService.openForm();
+  }
 }

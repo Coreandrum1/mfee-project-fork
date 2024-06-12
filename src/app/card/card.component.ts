@@ -2,6 +2,7 @@ import { Component, inject, Input } from '@angular/core';
 import { OverlayFormComponent } from '../overlay-form/overlay-form.component';
 import { CatBreed } from '../../assets/types';
 import { CatBreedHandlerService } from '../cat-breed-handler.service';
+import { OverlayFormService } from '../overlay-form.service';
 
 @Component({
   selector: 'app-card',
@@ -25,7 +26,8 @@ import { CatBreedHandlerService } from '../cat-breed-handler.service';
         </section>
       </div>
 
-      @if (isFormOpen) {
+      @if (formService.getIsFormOpen()) {
+      <!-- <app-overlay-form (dataFormClosed)="onCloseForm()"></app-overlay-form> -->
       <app-overlay-form (dataFormClosed)="onCloseForm()"></app-overlay-form>
       }
     </div>
@@ -34,26 +36,16 @@ import { CatBreedHandlerService } from '../cat-breed-handler.service';
 })
 export class CardComponent {
   @Input() catBreed!: CatBreed;
+  formService = inject(OverlayFormService);
   catBreedService = inject(CatBreedHandlerService);
 
-  isFormOpen: boolean;
-  constructor() {
-    this.isFormOpen = false;
-  }
-
   onOpenForm() {
-    this.openForm();
+    this.formService.openForm();
     this.catBreedService.setSelectedCatBreed(this.catBreed);
   }
 
   onCloseForm() {
-    this.closeForm();
+    this.formService.closeForm();
     this.catBreedService.setSelectedCatBreed(undefined);
-  }
-  openForm() {
-    this.isFormOpen = true;
-  }
-  closeForm() {
-    this.isFormOpen = false;
   }
 }
