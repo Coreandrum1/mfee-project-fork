@@ -10,6 +10,7 @@ import { CatBreed } from '../../assets/types';
     <div class="overlay">
       <div class="overlay-content">
         <h1>{{ currentCatBreed?.breed }}</h1>
+        <br />
         <button type="button" (click)="closeForm()">close</button>
       </div>
     </div>

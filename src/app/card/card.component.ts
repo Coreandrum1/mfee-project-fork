@@ -9,6 +9,7 @@ import { CatBreedHandlerService } from '../cat-breed-handler.service';
   imports: [OverlayFormComponent],
   template: `
     <div [className]="'content-card'">
+      <div [className]="'gradient-overlay'"></div>
       <img [src]="catBreed.imageSrc" />
       <div [className]="'content-description'">
         <p>Breed: {{ catBreed.breed }}</p>
@@ -17,8 +18,13 @@ import { CatBreedHandlerService } from '../cat-breed-handler.service';
         <p>Coat Color Variations: {{ catBreed.coatColorVariations }}</p>
         <p>Coat Shape Variations: {{ catBreed.coatShapeVariations }}</p>
         <p>Life Expectancy: {{ catBreed.lifeExpectancy }}</p>
+        <section class="form-buttons">
+          <button type="button" class="button-primary" (click)="onOpenForm()">
+            Edit
+          </button>
+        </section>
       </div>
-      <button type="button" (click)="onOpenForm()">open form</button>
+
       @if (isFormOpen) {
       <app-overlay-form (dataFormClosed)="onCloseForm()"></app-overlay-form>
       }

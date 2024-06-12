@@ -9,4 +9,28 @@
   background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
+
+  .overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(31, 31, 31);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(80, 80, 80, 0.1);
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: auto;
+
+    button {
+      border-radius: 0.5rem;
+      border: 1px solid rgb(255, 255, 255);
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 0.5rem rgba(80, 80, 80, 0.1);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+  }
 }
