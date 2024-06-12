@@ -1,9 +1,16 @@
 export interface CatBreed {
-  breed: string;
+  id: string;
+  name: string;
   origin: string;
-  coatLengthVariations: string[];
-  coatColorVariations: string[];
-  coatShapeVariations: string[];
-  lifeExpectancy: number;
-  imageSrc: string;
+  coatPattern: string;
+  coatLength: string;
+  health: Health;
+  locations: string[];
+  temperament: string[];
+  image: string;
+}
+
+export interface Health {
+  commonIssues: string[];
+  lifeExpectancy: string;
 }

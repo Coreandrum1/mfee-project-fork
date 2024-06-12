@@ -36,13 +36,50 @@ img {
     font-size: 0.9rem;
     line-height: 1.5rem;
     color: rgb(255, 255, 255);
-    justify-content: start;
+    text-align: start;
+
+    .see-more {
+      font-size: 0.9rem;
+      text-align: start;
+      color: gray;
+      margin-top: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        color: rgb(255, 255, 255);
+        text-decoration: underline;
+      }
+    }
+
+    small {
+      font-size: 0.8rem;
+      color: rgb(121, 121, 121);
+      text-align: start;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.7rem;
+      color: rgb(255, 255, 255);
+      text-align: start;
+      font-weight: bold;
+    }
+
+    p {
+      color: rgb(185, 185, 185);
+      text-align: start;
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+      font-weight: 600;
+    }
 
     .form-buttons {
       position: absolute;
       top: 0;
       right: 0;
       padding-right: 2rem;
+      padding-top: 1rem;
     }
   }
 

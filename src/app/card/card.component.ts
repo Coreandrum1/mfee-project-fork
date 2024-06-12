@@ -3,22 +3,22 @@ import { OverlayFormComponent } from '../overlay-form/overlay-form.component';
 import { CatBreed } from '../../assets/types';
 import { CatBreedHandlerService } from '../cat-breed-handler.service';
 import { OverlayFormService } from '../overlay-form.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [OverlayFormComponent],
+  imports: [OverlayFormComponent, CommonModule],
   template: `
     <div [className]="'content-card'">
       <div [className]="'gradient-overlay'"></div>
-      <img [src]="catBreed.imageSrc" />
+      <img [src]="catBreed.image" alt="cat-breed-image" />
       <div [className]="'content-description'">
-        <p>Breed: {{ catBreed.breed }}</p>
-        <p>Origin: {{ catBreed.origin }}</p>
-        <p>Coat Length Variations: {{ catBreed.coatLengthVariations }}</p>
-        <p>Coat Color Variations: {{ catBreed.coatColorVariations }}</p>
-        <p>Coat Shape Variations: {{ catBreed.coatShapeVariations }}</p>
-        <p>Life Expectancy: {{ catBreed.lifeExpectancy }}</p>
+        <small>{{ catBreed.origin | uppercase }}</small>
+        <h1>{{ catBreed.name }}</h1>
+        <p>Coat Length: {{ catBreed.coatLength }}</p>
+        <p>Coat Pattern: {{ catBreed.coatPattern }}</p>
+        <button class="see-more">See more...</button>
         <section class="form-buttons">
           <button type="button" class="button-primary" (click)="onOpenForm()">
             Edit

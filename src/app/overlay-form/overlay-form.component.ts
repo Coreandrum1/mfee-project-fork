@@ -16,7 +16,7 @@ import { OverlayFormService } from '../overlay-form.service';
   template: `
     <div class="overlay">
       <div class="overlay-content">
-        <h1>{{ currentCatBreed?.breed }}</h1>
+        <h1>{{ currentCatBreed?.name }}</h1>
         <br />
         <form [formGroup]="overlayForm" (ngSubmit)="onSubmit()">
           <div class="input-group">
@@ -94,11 +94,11 @@ export class OverlayFormComponent {
     this.currentCatBreed = this.catBreedService.getSelectedCatBreed();
 
     this.overlayForm = this.fb.group({
-      breed: [this.currentCatBreed?.breed, [Validators.required]],
+      breed: [this.currentCatBreed?.name, [Validators.required]],
       origin: [this.currentCatBreed?.origin, [Validators.required]],
-      image: [this.currentCatBreed?.imageSrc, [Validators.required]],
+      image: [this.currentCatBreed?.image, [Validators.required]],
       lifeExpectancy: [
-        this.currentCatBreed?.lifeExpectancy,
+        this.currentCatBreed?.health?.lifeExpectancy,
         [Validators.required],
       ],
     });
