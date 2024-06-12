@@ -6,22 +6,11 @@
       "coatPattern": "Solid",
       "coatLength": "Long",
       "health": {
-        "commonIssues": [
-          "Respiratory problems",
-          "Dental issues"
-        ],
+        "commonIssues": ["Respiratory problems", "Dental issues"],
         "lifeExpectancy": "12-17 years"
       },
-      "locations": [
-        "USA",
-        "UK",
-        "Iran"
-      ],
-      "temperament": [
-        "Affectionate",
-        "Quiet",
-        "Gentle"
-      ],
+      "locations": ["USA", "UK", "Iran"],
+      "temperament": ["Affectionate", "Quiet", "Gentle"],
       "origin": "Iran",
       "image": "https://www.thesprucepets.com/thmb/5OSN_p9hUfPssKsJORQDGnAz_tQ=/1963x0/filters:no_upscale():strip_icc()/GettyImages-181861505-4e63227ed0a14dc9bfe86848ef54caf3.jpg"
     },
@@ -31,22 +20,11 @@
       "coatPattern": "Pointed",
       "coatLength": "Short",
       "health": {
-        "commonIssues": [
-          "Respiratory problems",
-          "Crossed eyes"
-        ],
+        "commonIssues": ["Respiratory problems", "Crossed eyes"],
         "lifeExpectancy": "15-20 years"
       },
-      "locations": [
-        "Thailand",
-        "USA",
-        "UK"
-      ],
-      "temperament": [
-        "Social",
-        "Playful",
-        "Vocal"
-      ],
+      "locations": ["Thailand", "USA", "UK"],
+      "temperament": ["Social", "Playful", "Vocal"],
       "origin": "Thailand",
       "image": "https://images.ctfassets.net/7hqiona4456t/1giHPkTlgoRr4yMVi7aDaX/0677a69ec42e9f8678718d62dfe5b70d/29.jpg"
     },
@@ -56,22 +34,11 @@
       "coatPattern": "Tabby",
       "coatLength": "Long",
       "health": {
-        "commonIssues": [
-          "Hip dysplasia",
-          "Heart disease"
-        ],
+        "commonIssues": ["Hip dysplasia", "Heart disease"],
         "lifeExpectancy": "12-15 years"
       },
-      "locations": [
-        "USA",
-        "Canada",
-        "Europe"
-      ],
-      "temperament": [
-        "Friendly",
-        "Intelligent",
-        "Gentle"
-      ],
+      "locations": ["USA", "Canada", "Europe"],
+      "temperament": ["Friendly", "Intelligent", "Gentle"],
       "origin": "USA",
       "image": "https://miro.medium.com/v2/da:true/resize:fit:1200/0*-CBFV5jWA-VnGNBX"
     },
@@ -87,16 +54,8 @@
         ],
         "lifeExpectancy": "12-16 years"
       },
-      "locations": [
-        "USA",
-        "UK",
-        "Australia"
-      ],
-      "temperament": [
-        "Active",
-        "Curious",
-        "Social"
-      ],
+      "locations": ["USA", "UK", "Australia"],
+      "temperament": ["Active", "Curious", "Social"],
       "origin": "USA",
       "image": "https://media-be.chewy.com/wp-content/uploads/2015/08/22145406/bengal-1024x615.jpg"
     },
@@ -106,22 +65,11 @@
       "coatPattern": "Hairless",
       "coatLength": "None",
       "health": {
-        "commonIssues": [
-          "Skin problems",
-          "Dental issues"
-        ],
+        "commonIssues": ["Skin problems", "Dental issues"],
         "lifeExpectancy": "8-14 years"
       },
-      "locations": [
-        "Canada",
-        "USA",
-        "Europe"
-      ],
-      "temperament": [
-        "Affectionate",
-        "Energetic",
-        "Playful"
-      ],
+      "locations": ["Canada", "USA", "Europe"],
+      "temperament": ["Affectionate", "Energetic", "Playful"],
       "origin": "Canada",
       "image": "https://cdn.shopify.com/s/files/1/0557/6936/6711/files/hairless_Sphynx_cat_1024x1024.jpg?v=1642999042"
     }
@@ -144,27 +92,6 @@
       "firstName": "Francisco",
       "lastName": "Lopez",
       "role": "user"
-    },
-    {
-      "id": "8dd60dd4-92d1-4bdf-af39-da42ec7f6bee",
-      "email": "f@h.com",
-      "password": "123123",
-      "firstName": "asdasd",
-      "lastName": "312"
-    },
-    {
-      "id": "f79dae1f-2b32-451a-9336-b3a1983c6bbe",
-      "email": "f@h.com12",
-      "password": "123123",
-      "firstName": "asdasd",
-      "lastName": "312"
-    },
-    {
-      "id": "273812fa-2c81-43ff-9da1-a47ff59ca504",
-      "email": "pedro@gmail.com",
-      "password": "pedro@gmail.com",
-      "firstName": "pedro@gmail.com",
-      "lastName": "pedro@gmail.com"
     }
   ]
 }

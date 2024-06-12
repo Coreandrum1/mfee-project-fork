@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   imports: [ReactiveFormsModule, CommonModule],
   template: `
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-      <div>
+      <div class="form-input-container">
         <label for="firstName">First Name:</label>
         <input id="firstName" formControlName="firstName" type="text" />
         @if (registrationForm.get('firstName')?.invalid &&
@@ -26,6 +26,7 @@ import { Router } from '@angular/router';
           }
         </div>
         }
+        <br />
         <label for="lastName">Last Name:</label>
         <input id="lastName" formControlName="lastName" type="text" />
         @if ( registrationForm.get('lastName')?.invalid &&
@@ -37,7 +38,7 @@ import { Router } from '@angular/router';
         </div>
         }
       </div>
-      <div>
+      <div class="form-input-container">
         <label for="email">Email:</label>
         <input id="email" formControlName="email" type="email" />
         @if ( registrationForm.get('email')?.invalid &&
@@ -52,7 +53,7 @@ import { Router } from '@angular/router';
         </div>
         }
       </div>
-      <div>
+      <div class="form-input-container">
         <label for="password">Password:</label>
         <input id="password" formControlName="password" type="password" />
         @if (registrationForm.get('password')?.invalid &&
@@ -66,7 +67,7 @@ import { Router } from '@angular/router';
         </div>
         }
       </div>
-      <div>
+      <div class="form-input-container">
         <label for="confirmPassword">Confirm Password:</label>
         <input
           id="confirmPassword"
@@ -132,6 +133,9 @@ export class RegisterFormComponent {
 
       if (response) {
         this.router.navigate(['/home']);
+      } else {
+        console.log(response);
+        alert('user already exists');
       }
     }
   }

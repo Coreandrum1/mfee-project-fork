@@ -15,41 +15,45 @@ import { Router, RouterLink } from '@angular/router';
   imports: [ReactiveFormsModule, CommonModule, RouterLink],
   template: `
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div>
+      <div class="form-input-container">
         <label for="email">Email:</label>
         <input id="email" formControlName="email" type="email" />
-        <div
-          *ngIf="
-            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
-          "
-        >
-          <small *ngIf="loginForm.get('email')?.errors?.['required']"
-            >Email is required.</small
-          >
-          <small *ngIf="loginForm.get('email')?.errors?.['email']"
-            >Invalid email address.</small
-          >
+        @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched)
+        {
+        <div>
+          @if (loginForm.get('email')?.errors?.['required']) {
+          <small>Email is required.</small>
+          } @if (loginForm.get('email')?.errors?.['email']) {
+          <small>Invalid email address.</small>
+          }
         </div>
+        }
       </div>
-      <div>
+      <div class="form-input-container">
         <label for="password">Password:</label>
         <input id="password" formControlName="password" type="password" />
-        <div
-          *ngIf="
-            loginForm.get('password')?.invalid &&
-            loginForm.get('password')?.touched
-          "
-        >
-          <small *ngIf="loginForm.get('password')?.errors?.['required']"
-            >Password is required.</small
-          >
-          <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
-            Password must be at least 6 characters long.
-          </small>
+        @if (loginForm.get('password')?.invalid &&
+        loginForm.get('password')?.touched) {
+        <div>
+          @if (loginForm.get('password')?.errors?.['required']) {
+          <small>Password is required.</small>
+          } @if (loginForm.get('password')?.errors?.['minlength']) {
+          <small>Password must be at least 6 characters long.</small>
+          }
         </div>
+        }
       </div>
-      <button type="submit" [disabled]="loginForm.invalid">Login</button>
-      <p>Don't have an account? <a [routerLink]="'/register'">Sign up</a></p>
+      <button
+        class="submit-button"
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+      <p>
+        Don't have an account?
+        <a [routerLink]="'/register'" class="signup-link">Sign up</a>
+      </p>
     </form>
   `,
   styleUrls: ['./login-form.component.css'],
@@ -75,6 +79,8 @@ export class LoginFormComponent {
       );
       if (response) {
         this.router.navigate(['/home']);
+      } else {
+        alert('Invalid email or password');
       }
     }
   }

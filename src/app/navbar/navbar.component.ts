@@ -9,12 +9,14 @@ import { AuthService } from '../auth.service';
   template: `
     <nav>
       <section [className]="'navbar-brand'">
-        <div>Logo</div>
+        <a [routerLink]="'/'" class="logo-icon">_CATIFY</a>
       </section>
       <section [className]="'navbar-menu'">
+        @if (authService.getCurrentUser()) {
         <a [routerLink]="'/'">Categories</a>
         <a [routerLink]="'/login'">Login</a>
         <a (click)="onLogout()">Logout</a>
+        }
       </section>
     </nav>
   `,
