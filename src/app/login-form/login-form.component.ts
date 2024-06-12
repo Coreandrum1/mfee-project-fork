@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -55,6 +56,7 @@ import { AuthService } from '../auth.service';
 export class LoginFormComponent {
   loginForm: FormGroup;
   authService = inject(AuthService);
+  router = inject(Router);
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
@@ -63,10 +65,16 @@ export class LoginFormComponent {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
-      this.authService.login();
+      const response = await this.authService.login(
+        this.loginForm.value.email,
+        this.loginForm.value.password
+      );
+      if (response) {
+        this.router.navigate(['/home']);
+      }
     }
   }
 }

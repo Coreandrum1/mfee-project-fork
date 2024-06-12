@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { OverlayFormService } from '../overlay-form.service';
+import { WebService } from '../web.service';
 
 @Component({
   selector: 'app-overlay-form',
@@ -34,8 +35,12 @@ import { OverlayFormService } from '../overlay-form.service';
           <div class="input-group">
             <label for="origin">Origin:</label>
             <select id="origin" formControlName="origin" type="text">
-              <option value="United States">United States</option>
-              <option value="United Kingdom">United Kingdom</option>
+              <option value="USA">United States</option>
+              <option value="Iran">Iran</option>
+              <option value="Thailand">Thailand</option>
+              <option value="Canada">Canada</option>
+              <option value="México">México</option>
+              <option value="Brazil">Brazil</option>
               <option value="Japan">Japan</option>
             </select>
             @if (overlayForm.get('origin')?.invalid &&
@@ -84,9 +89,9 @@ import { OverlayFormService } from '../overlay-form.service';
   styleUrl: './overlay-form.component.css',
 })
 export class OverlayFormComponent {
-  // @Output() dataFormClosed = new EventEmitter<void>();
   catBreedService = inject(CatBreedHandlerService);
   formService = inject(OverlayFormService);
+  webService = inject(WebService);
   overlayForm: FormGroup;
   currentCatBreed: CatBreed | undefined;
 
@@ -104,15 +109,50 @@ export class OverlayFormComponent {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.overlayForm.valid) {
-      console.log(this.overlayForm.value);
-      this.catBreedService.updateCatBreed(this.overlayForm.value);
+      let catBreedCopy = Object.assign({}, this.currentCatBreed);
+      if (this.currentCatBreed) {
+        catBreedCopy.name = this.overlayForm.value.breed;
+        catBreedCopy.origin = this.overlayForm.value.origin;
+        catBreedCopy.image = this.overlayForm.value.image;
+        catBreedCopy.health.lifeExpectancy =
+          this.overlayForm.value.lifeExpectancy;
+        try {
+          await this.webService.updateCatBreed(catBreedCopy);
+          this.catBreedService.updateCatBreedList(catBreedCopy);
+          this.formService.closeForm();
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        catBreedCopy = {
+          id: crypto.randomUUID(),
+          name: this.overlayForm.value.breed,
+          origin: this.overlayForm.value.origin,
+          image: this.overlayForm.value.image,
+          health: {
+            commonIssues: [],
+            lifeExpectancy: this.overlayForm.value.lifeExpectancy,
+          },
+          coatPattern: '',
+          coatLength: '',
+          locations: [],
+          temperament: [],
+        };
+
+        try {
+          await this.webService.addCatBreed(catBreedCopy);
+          this.catBreedService.addCatBreed(catBreedCopy);
+          this.formService.closeForm();
+        } catch (error) {
+          console.log(error);
+        }
+      }
     }
   }
 
   closeForm() {
-    // this.dataFormClosed.emit();
     this.formService.closeForm();
   }
 }

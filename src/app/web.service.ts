@@ -18,4 +18,30 @@ export class WebService {
     const data = await fetch(`${API_URL}/catBreeds/${id}`);
     return (await data.json()) ?? {};
   }
+
+  async updateCatBreed(data: CatBreed): Promise<any> {
+    const dataToSend = Object.assign({}, data);
+    const dataToSendJson = JSON.stringify(dataToSend);
+    const response = await fetch(`${API_URL}/catBreeds/${data.id}`, {
+      method: 'PUT',
+      body: dataToSendJson,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return (await response.json()) ?? {};
+  }
+
+  async addCatBreed(data: CatBreed): Promise<any> {
+    const dataToSend = Object.assign({}, data);
+    const dataToSendJson = JSON.stringify(dataToSend);
+    const response = await fetch(`${API_URL}/catBreeds`, {
+      method: 'POST',
+      body: dataToSendJson,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return (await response.json()) ?? {};
+  }
 }

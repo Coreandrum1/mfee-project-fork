@@ -6,10 +6,33 @@ import { CatBreed } from '../assets/types';
 })
 export class CatBreedHandlerService {
   currentCatBreed: CatBreed | undefined;
+  filteredCatBreeds: CatBreed[] = [];
+  catBreedList: CatBreed[] = [];
   constructor() {}
 
-  updateCatBreed(catBreed: CatBreed) {
-    this.currentCatBreed = catBreed;
+  updateCatBreedList(newCatBreed: CatBreed) {
+    const indexFound = this.catBreedList.findIndex(
+      (catBreed) => catBreed.id === newCatBreed.id
+    );
+    if (indexFound !== -1) {
+      this.catBreedList[indexFound] = newCatBreed;
+      this.filteredCatBreeds = this.catBreedList;
+    }
+  }
+
+  addCatBreed(newCatBreed: CatBreed) {
+    this.catBreedList.push(newCatBreed);
+    this.filteredCatBreeds = this.catBreedList;
+  }
+
+  removeCatBreed(catBreed: CatBreed) {
+    const indexFound = this.catBreedList.findIndex(
+      (catBreed) => catBreed.id === catBreed.id
+    );
+    if (indexFound !== -1) {
+      this.catBreedList.splice(indexFound, 1);
+      this.filteredCatBreeds = this.catBreedList;
+    }
   }
 
   getSelectedCatBreed(): CatBreed | undefined {

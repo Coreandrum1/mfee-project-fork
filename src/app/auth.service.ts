@@ -1,26 +1,33 @@
 // auth.service.ts
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { User } from '../assets/types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private isAuthenticated = true;
+  private API_URL = 'http://localhost:3000/users';
 
-  constructor(private router: Router) {}
+  constructor() {}
 
-  login() {
-    this.isAuthenticated = true;
-    this.router.navigate(['/home']);
+  async login(email: string, password: string): Promise<any> {
+    const users = await fetch(`${this.API_URL}`);
+    const usersList = (await users.json()) ?? [];
+    const user = usersList.find((u: User) => {
+      return u.email === email;
+    });
+    if (user && user.password === password) {
+      localStorage.setItem('currentUser', user);
+      return user;
+    }
+    return null;
   }
 
-  logout() {
-    this.isAuthenticated = false;
-    this.router.navigate(['/login']);
+  logout(): void {
+    localStorage.removeItem('currentUser');
   }
 
-  isLoggedIn(): boolean {
-    return this.isAuthenticated;
+  getCurrentUser(): any {
+    return localStorage.getItem('currentUser') ?? '';
   }
 }

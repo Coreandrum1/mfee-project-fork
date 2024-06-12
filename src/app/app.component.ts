@@ -16,7 +16,7 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent {
   authService = inject(AuthService);
-  isAuthenticated = this.authService.isLoggedIn();
+  isAuthenticated = this.authService.getCurrentUser() !== '';
   router: Router = inject(Router);
 
   constructor() {

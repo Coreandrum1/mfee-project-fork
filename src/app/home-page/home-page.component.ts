@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
       <button (click)="addNewCatBreed()">Add New Cat Breed</button>
     </div>
     <article [className]="'content-area'">
-      @for (catBreed of filteredCatBreeds; track $index) {
+      @for (catBreed of catBreedService.filteredCatBreeds; track $index) {
       <app-card [catBreed]="catBreed"></app-card>
       }
     </article>
@@ -34,14 +34,12 @@ export class HomePageComponent {
   formService = inject(OverlayFormService);
   webService = inject(WebService);
   uniqueCatOrigins: string[] = [];
-  filteredCatBreeds: CatBreed[] = [];
-  catBreeds: CatBreed[] = [];
 
   constructor() {
     this.uniqueCatOrigins = this.getUniqueCatOrigins();
     this.webService.getCatBreeds().then((catBreeds) => {
-      this.catBreeds = catBreeds;
-      this.filteredCatBreeds = catBreeds;
+      this.catBreedService.catBreedList = catBreeds;
+      this.catBreedService.filteredCatBreeds = catBreeds;
       this.uniqueCatOrigins = this.getUniqueCatOrigins();
     });
   }
@@ -53,16 +51,18 @@ export class HomePageComponent {
 
   filtercatBreedsByOrigin(origin: string | 'All') {
     if (origin === 'All') {
-      this.filteredCatBreeds = this.catBreeds;
+      this.catBreedService.filteredCatBreeds =
+        this.catBreedService.catBreedList;
     } else {
-      this.filteredCatBreeds = this.catBreeds.filter(
-        (catBreed) => catBreed.origin === origin
-      );
+      this.catBreedService.filteredCatBreeds =
+        this.catBreedService.catBreedList.filter(
+          (catBreed) => catBreed.origin === origin
+        );
     }
   }
 
   getUniqueCatOrigins(): string[] {
-    return this.catBreeds
+    return this.catBreedService.catBreedList
       .map((catBreed) => catBreed.origin)
       .filter((origin, index, self) => self.indexOf(origin) === index);
   }

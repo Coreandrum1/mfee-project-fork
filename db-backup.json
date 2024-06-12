@@ -1,7 +1,7 @@
 {
   "catBreeds": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Persian",
       "coatPattern": "Solid",
       "coatLength": "Long",
@@ -15,7 +15,7 @@
       "image": "https://www.thesprucepets.com/thmb/5OSN_p9hUfPssKsJORQDGnAz_tQ=/1963x0/filters:no_upscale():strip_icc()/GettyImages-181861505-4e63227ed0a14dc9bfe86848ef54caf3.jpg"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Siamese",
       "coatPattern": "Pointed",
       "coatLength": "Short",
@@ -29,7 +29,7 @@
       "image": "https://images.ctfassets.net/7hqiona4456t/1giHPkTlgoRr4yMVi7aDaX/0677a69ec42e9f8678718d62dfe5b70d/29.jpg"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Maine Coon",
       "coatPattern": "Tabby",
       "coatLength": "Long",
@@ -43,7 +43,7 @@
       "image": "https://miro.medium.com/v2/da:true/resize:fit:1200/0*-CBFV5jWA-VnGNBX"
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Bengal",
       "coatPattern": "Spotted",
       "coatLength": "Short",
@@ -60,7 +60,7 @@
       "image": "https://media-be.chewy.com/wp-content/uploads/2015/08/22145406/bengal-1024x615.jpg"
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Sphynx",
       "coatPattern": "Hairless",
       "coatLength": "None",
@@ -72,26 +72,6 @@
       "temperament": ["Affectionate", "Energetic", "Playful"],
       "origin": "Canada",
       "image": "https://cdn.shopify.com/s/files/1/0557/6936/6711/files/hairless_Sphynx_cat_1024x1024.jpg?v=1642999042"
-    }
-  ],
-  "users": [
-    {
-      "id": "1",
-      "username": "admin",
-      "password": "admin",
-      "email": "admin@admin.com",
-      "firstName": "Admin",
-      "lastName": "Admin",
-      "role": "admin"
-    },
-    {
-      "id": "2",
-      "username": "francisco",
-      "password": "francisco",
-      "email": "francisco@email.com",
-      "firstName": "Francisco",
-      "lastName": "Lopez",
-      "role": "user"
     }
   ]
 }
