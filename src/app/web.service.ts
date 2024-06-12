@@ -14,7 +14,7 @@ export class WebService {
     return (await data.json()) ?? [];
   }
 
-  async getCatBreedById(id: number): Promise<CatBreed> {
+  async getCatBreedById(id: string): Promise<CatBreed> {
     const data = await fetch(`${API_URL}/catBreeds/${id}`);
     return (await data.json()) ?? {};
   }

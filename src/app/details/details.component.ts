@@ -13,15 +13,14 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
       <a [routerLink]="'/home'">Go back</a>
       <img [src]="catBreedDetails?.image" alt="cat breed image" />
     </div>
-    <h1>{{ catBreedDetails?.name }}</h1>
-    <p>{{ catBreedDetails?.origin }}</p>
+    <h1>Work in progress</h1>
   </article>`,
   styleUrl: './details.component.css',
 })
 export class DetailsComponent {
   webService = inject(WebService);
   catBreedDetails: CatBreed | undefined;
-  breedId: number | null = null;
+  breedId: string | null = null;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -29,7 +28,7 @@ export class DetailsComponent {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
       if (id) {
-        this.breedId = +id;
+        this.breedId = id;
         this.loadBreedDetails(this.breedId);
       } else {
         // Handle the case where the id is null
@@ -38,7 +37,7 @@ export class DetailsComponent {
     });
   }
 
-  loadBreedDetails(id: number): void {
+  loadBreedDetails(id: string): void {
     this.webService.getCatBreedById(id).then((catBreed) => {
       this.catBreedDetails = catBreed;
     });

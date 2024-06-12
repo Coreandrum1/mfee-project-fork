@@ -17,8 +17,7 @@ import { RouterLink } from '@angular/router';
       <div [className]="'content-description'">
         <small>{{ catBreed.origin | uppercase }}</small>
         <h1>{{ catBreed.name }}</h1>
-        <p>Coat Length: {{ catBreed.coatLength }}</p>
-        <p>Coat Pattern: {{ catBreed.coatPattern }}</p>
+        <p>Life expectancy: {{ catBreed.health.lifeExpectancy }}</p>
         <a class="see-more" [routerLink]="['/cat-breed', catBreed.id]"
           >See more...</a
         >
