@@ -114,11 +114,17 @@ export class RegisterFormComponent {
   passwordMatchValidator(form: FormGroup) {
     const password = form.get('password');
     const confirmPassword = form.get('confirmPassword');
-    return password &&
+    if (
+      password &&
       confirmPassword &&
-      password.value === confirmPassword.value
-      ? null
-      : { mismatch: true };
+      password.value !== confirmPassword.value
+    ) {
+      confirmPassword.setErrors({ mismatch: true });
+      return { mismatch: true };
+    } else {
+      confirmPassword?.setErrors(null);
+      return null;
+    }
   }
 
   async onSubmit() {
