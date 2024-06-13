@@ -127,7 +127,7 @@
     },
     {
       "id": "222557b4-6b24-40b3-bfd8-5f809e1c3c14",
-      "name": "Test Cat",
+      "name": "CAT",
       "origin": "USA",
       "image": "https://www.thesprucepets.com/thmb/5OSN_p9hUfPssKsJORQDGnAz_tQ=/1963x0/filters:no_upscale():strip_icc()/GettyImages-181861505-4e63227ed0a14dc9bfe86848ef54caf3.jpg",
       "health": {
@@ -158,6 +158,13 @@
       "firstName": "Francisco",
       "lastName": "Lopez",
       "role": "user"
+    },
+    {
+      "id": "d5c53a27-7fd4-46f0-ae07-49d193c83e41",
+      "email": "pedro@gmail.com",
+      "password": "123123",
+      "firstName": "Jane",
+      "lastName": "Doe"
     }
   ],
   "comments": [
@@ -168,6 +175,16 @@
       "userLastName": "Lopez",
       "catId": "1",
       "comment": "This cat is so cute 😻",
+      "createdAt": "Thu Jun 13 2024",
+      "updatedAt": "Thu Jun 13 2024"
+    },
+    {
+      "id": "75e59b5c-7d92-4eea-a757-4180b1539c99",
+      "userId": "",
+      "userName": "Francisco",
+      "userLastName": "Lopez",
+      "catId": "1",
+      "comment": "jijiji",
       "createdAt": "Thu Jun 13 2024",
       "updatedAt": "Thu Jun 13 2024"
     }

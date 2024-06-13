@@ -22,6 +22,19 @@ import { AuthService } from '../auth.service';
       <img [src]="catBreedDetails?.image" alt="cat breed image" />
     </div>
     <section class="comments-section">
+      <section class="details-section">
+        <h1>{{ catBreedDetails?.name }}</h1>
+        <h2>{{ catBreedDetails?.origin }}</h2>
+        <h3>Coat pattern: {{ catBreedDetails?.coatPattern }}</h3>
+        <h3>Coat length: {{ catBreedDetails?.coatLength }}</h3>
+        <h3>Health: {{ catBreedDetails?.health?.lifeExpectancy }}</h3>
+        <h3>Locations: {{ catBreedDetails?.locations?.join(', ') }}</h3>
+        <h3>Temperament: {{ catBreedDetails?.temperament?.join(', ') }}</h3>
+        <h3>
+          Health issues: {{ catBreedDetails?.health?.commonIssues?.join(', ') }}
+        </h3>
+        <h3>Life expectancy: {{ catBreedDetails?.health?.lifeExpectancy }}</h3>
+      </section>
       <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
         <label for="comment">Add a comment</label>
         <input

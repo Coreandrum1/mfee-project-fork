@@ -8,30 +8,30 @@ import { DetailsComponent } from './details/details.component';
 export const routes: Routes = [
   {
     path: '',
-    title: 'Home Page',
+    title: 'Home',
     redirectTo: '/home',
     pathMatch: 'full',
   },
   {
     path: 'home',
     component: HomePageComponent,
-    title: 'Home Page',
+    title: 'Home',
     canActivate: [authGuard],
   },
   {
     path: 'login',
     component: LoginFormComponent,
-    title: 'Home Page',
+    title: 'Login',
   },
   {
     path: 'register',
     component: RegisterFormComponent,
-    title: 'Register Page',
+    title: 'Sign Up',
   },
   {
     path: 'cat-breed/:id',
     component: DetailsComponent,
-    title: 'Home Page',
+    title: 'Cat Details',
     canActivate: [authGuard],
   },
   // otherwise redirect to home

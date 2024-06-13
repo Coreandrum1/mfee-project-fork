@@ -28,13 +28,34 @@ a {
 article {
   .comments-section {
     padding: 2rem;
-    margin-top: 2rem;
+    padding-top: 1rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     width: 100%;
     gap: 2rem;
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+      text-align: center;
+      color: rgb(121, 121, 121);
+    }
+
+    h3 {
+      color: rgb(185, 185, 185);
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+      font-weight: 600;
+    }
 
     .comment {
       display: flex;
