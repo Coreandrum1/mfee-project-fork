@@ -17,7 +17,12 @@ import { Router } from '@angular/router';
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="form-input-container">
         <label for="firstName">First Name:</label>
-        <input id="firstName" formControlName="firstName" type="text" />
+        <input
+          id="firstName"
+          formControlName="firstName"
+          type="text"
+          placeholder="e.g. Jane"
+        />
         @if (registrationForm.get('firstName')?.invalid &&
         registrationForm.get('firstName')?.touched) {
         <div>
@@ -28,7 +33,12 @@ import { Router } from '@angular/router';
         }
         <br />
         <label for="lastName">Last Name:</label>
-        <input id="lastName" formControlName="lastName" type="text" />
+        <input
+          id="lastName"
+          formControlName="lastName"
+          type="text"
+          placeholder="e.g. Doe"
+        />
         @if ( registrationForm.get('lastName')?.invalid &&
         registrationForm.get('lastName')?.touched) {
         <div>
@@ -40,7 +50,12 @@ import { Router } from '@angular/router';
       </div>
       <div class="form-input-container">
         <label for="email">Email:</label>
-        <input id="email" formControlName="email" type="email" />
+        <input
+          id="email"
+          formControlName="email"
+          type="email"
+          placeholder="email@example.com"
+        />
         @if ( registrationForm.get('email')?.invalid &&
         registrationForm.get('email')?.touched ) {
 
@@ -55,7 +70,12 @@ import { Router } from '@angular/router';
       </div>
       <div class="form-input-container">
         <label for="password">Password:</label>
-        <input id="password" formControlName="password" type="password" />
+        <input
+          id="password"
+          formControlName="password"
+          placeholder="*****"
+          type="password"
+        />
         @if (registrationForm.get('password')?.invalid &&
         registrationForm.get('password')?.touched) {
         <div>
@@ -70,6 +90,7 @@ import { Router } from '@angular/router';
       <div class="form-input-container">
         <label for="confirmPassword">Confirm Password:</label>
         <input
+          placeholder="*****"
           id="confirmPassword"
           formControlName="confirmPassword"
           type="password"

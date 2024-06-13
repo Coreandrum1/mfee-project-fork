@@ -24,3 +24,117 @@ a {
   padding-left: 2rem;
   padding-top: 1rem;
 }
+
+article {
+  .comments-section {
+    padding: 2rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+
+    .comment {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #1a1a1a;
+      width: 40%;
+      max-width: 700px;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      gap: 1rem;
+
+      .comment-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .avatar {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: #fff;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      .comment-content {
+        display: flex;
+        flex-direction: column;
+
+        .comment-header {
+          display: flex;
+          align-items: start;
+
+          .comment-author {
+            font-weight: bold;
+            font-size: 1rem;
+            color: #fff;
+          }
+
+          .comment-date {
+            font-size: 0.8rem;
+            color: #646464;
+            padding-left: 0.5rem;
+          }
+        }
+
+        .comment-body {
+          text-align: start;
+          font-size: 1rem;
+          color: #b9b9b9;
+        }
+      }
+    }
+  }
+
+  form {
+    border-radius: 0.5rem;
+    padding: 2rem;
+    max-width: 600px;
+    width: 50%;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+
+    label {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    input {
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: none;
+      background-color: #464646;
+      color: #fff;
+      text-align: start;
+      width: 100%;
+
+      &::placeholder {
+        color: #fff;
+        opacity: 0.5;
+      }
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      color: #fff;
+      cursor: pointer;
+      width: 20%;
+      border: 1px solid #fff;
+    }
+  }
+}

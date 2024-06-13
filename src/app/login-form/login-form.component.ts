@@ -17,7 +17,12 @@ import { Router, RouterLink } from '@angular/router';
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-input-container">
         <label for="email">Email:</label>
-        <input id="email" formControlName="email" type="email" />
+        <input
+          id="email"
+          formControlName="email"
+          placeholder="email@email.com"
+          type="email"
+        />
         @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched)
         {
         <div>
@@ -31,7 +36,12 @@ import { Router, RouterLink } from '@angular/router';
       </div>
       <div class="form-input-container">
         <label for="password">Password:</label>
-        <input id="password" formControlName="password" type="password" />
+        <input
+          id="password"
+          formControlName="password"
+          placeholder="password"
+          type="password"
+        />
         @if (loginForm.get('password')?.invalid &&
         loginForm.get('password')?.touched) {
         <div>

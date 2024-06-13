@@ -22,3 +22,14 @@ export interface User {
   firstName: string;
   lastName: string;
 }
+
+export interface Comment {
+  id: string;
+  userId: string;
+  userName: string;
+  userLastName: string;
+  catId: string;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
+}

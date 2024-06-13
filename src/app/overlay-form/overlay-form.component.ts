@@ -22,7 +22,12 @@ import { WebService } from '../web.service';
         <form [formGroup]="overlayForm" (ngSubmit)="onSubmit()">
           <div class="input-group">
             <label for="breed">Breed:</label>
-            <input id="breed" formControlName="breed" type="text" />
+            <input
+              id="breed"
+              formControlName="breed"
+              placeholder="e.g. Persian"
+              type="text"
+            />
             @if (overlayForm.get('breed')?.invalid &&
             overlayForm.get('breed')?.touched) {
             <div>
@@ -34,7 +39,11 @@ import { WebService } from '../web.service';
           </div>
           <div class="input-group">
             <label for="origin">Origin:</label>
-            <select id="origin" formControlName="origin" type="text">
+            <select
+              id="origin"
+              formControlName="origin"
+              placeholder="Select an origin"
+            >
               <option value="USA">United States</option>
               <option value="Iran">Iran</option>
               <option value="Thailand">Thailand</option>
@@ -54,7 +63,12 @@ import { WebService } from '../web.service';
           </div>
           <div class="input-group">
             <label for="image">Image:</label>
-            <input id="image" formControlName="image" type="text" />
+            <input
+              id="image"
+              placeholder="https://..."
+              formControlName="image"
+              type="text"
+            />
             @if (overlayForm.get('image')?.invalid &&
             overlayForm.get('image')?.touched) {
             <div>
@@ -70,6 +84,7 @@ import { WebService } from '../web.service';
               id="lifeExpectancy"
               formControlName="lifeExpectancy"
               type="text"
+              placeholder="e.g. 10-15 years"
             />
             @if (overlayForm.get('lifeExpectancy')?.invalid &&
             overlayForm.get('lifeExpectancy')?.touched) {
@@ -80,9 +95,17 @@ import { WebService } from '../web.service';
             </div>
             }
           </div>
-          <button type="submit" [disabled]="overlayForm.invalid">Submit</button>
+          <div class="action-buttons">
+            <button
+              class="submit-button"
+              type="submit"
+              [disabled]="overlayForm.invalid"
+            >
+              Submit
+            </button>
+            <button type="button" (click)="closeForm()">Close</button>
+          </div>
         </form>
-        <button type="button" (click)="closeForm()">close</button>
       </div>
     </div>
   `,

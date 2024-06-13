@@ -17,7 +17,7 @@ export class AuthService {
       return u.email === email;
     });
     if (user && user.password === password) {
-      localStorage.setItem('currentUser', user);
+      localStorage.setItem('currentUser', JSON.stringify(user));
       return user;
     }
     return null;
@@ -42,7 +42,7 @@ export class AuthService {
     });
     const newUserList = (await res.json()) ?? [];
     console.log(newUserList);
-    localStorage.setItem('currentUser', newUserList);
+    localStorage.setItem('currentUser', JSON.stringify(newUserList[0]));
     return newUserList;
   }
 
@@ -51,6 +51,12 @@ export class AuthService {
   }
 
   getCurrentUser(): any {
+    localStorage.getItem('currentUser');
     return localStorage.getItem('currentUser') ?? '';
+  }
+
+  getUserId(): string {
+    const user = this.getCurrentUser();
+    return user?.id ?? '';
   }
 }

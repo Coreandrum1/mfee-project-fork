@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CatBreed } from '../assets/types';
+import { CatBreed, Comment } from '../assets/types';
 
 const API_URL = 'http://localhost:3000';
 
@@ -36,6 +36,24 @@ export class WebService {
     const dataToSend = Object.assign({}, data);
     const dataToSendJson = JSON.stringify(dataToSend);
     const response = await fetch(`${API_URL}/catBreeds`, {
+      method: 'POST',
+      body: dataToSendJson,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return (await response.json()) ?? {};
+  }
+
+  async getCommentsByCatId(id: string): Promise<any[]> {
+    const data = await fetch(`${API_URL}/comments?catId=${id}`);
+    return (await data.json()) ?? [];
+  }
+
+  async addComment(data: Comment): Promise<any> {
+    const dataToSend = Object.assign({}, data);
+    const dataToSendJson = JSON.stringify(dataToSend);
+    const response = await fetch(`${API_URL}/comments`, {
       method: 'POST',
       body: dataToSendJson,
       headers: {
