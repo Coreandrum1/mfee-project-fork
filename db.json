@@ -129,7 +129,7 @@
       "id": "222557b4-6b24-40b3-bfd8-5f809e1c3c14",
       "name": "TEST CAT",
       "origin": "Iran",
-      "image": "https://www.thesprucepets.com/thmb/5OSN_p9hUfPssKsJORQDGnAz_tQ=/1963x0/filters:no_upscale():strip_icc()/GettyImages-181861505-4e63227ed0a14dc9bfe86848ef54caf3.jpg",
+      "image": "https://media-be.chewy.com/wp-content/uploads/2019/07/24115655/spotted-cat-breed-bengal-1024x576.jpg",
       "health": {
         "commonIssues": [],
         "lifeExpectancy": "2-4 years"
@@ -185,6 +185,16 @@
       "userLastName": "Lopez",
       "catId": "1",
       "comment": "jijiji",
+      "createdAt": "Thu Jun 13 2024",
+      "updatedAt": "Thu Jun 13 2024"
+    },
+    {
+      "id": "5ff58173-7183-4c8a-b6a0-c0758835c0dd",
+      "userId": "",
+      "userName": "Francisco",
+      "userLastName": "Lopez",
+      "catId": "222557b4-6b24-40b3-bfd8-5f809e1c3c14",
+      "comment": "This is a test comment",
       "createdAt": "Thu Jun 13 2024",
       "updatedAt": "Thu Jun 13 2024"
     }
