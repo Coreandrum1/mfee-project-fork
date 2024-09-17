@@ -5,6 +5,7 @@ import Category from './category';
 import CommentSchema from '../schemas/comment';
 import { CATEGORIES, COMMENTS, POSTS } from '../data/initialData';
 
+//Initialize the database records so we can test
 const initMongoRecords = async () => {
   await PostSchema.deleteMany({});
   await Category.deleteMany({});
@@ -53,6 +54,11 @@ const createPostComment = async (postId: string, comment: { author: string; cont
     ...comment
   };
 
+  const foundPost = await PostSchema.findOne({ id: postId });
+  if (!foundPost) {
+    throw new Error('Post not found');
+  }
+
   await CommentSchema.create(newComment);
   await PostSchema.updateOne({ id: postId }, { $push: { comments: newComment.id } });
   return newComment;
@@ -66,11 +72,8 @@ const updatePost = async (postId: string, data: Partial<Post>) => {
 
 // 7. Delete post
 const deletePost = async (postId: string) => {
-  const deletedPost = await PostSchema.findOneAndUpdate({ id: postId }, { deleted: true });
-  const deletedComment = await CommentSchema.findOneAndUpdate({ id: postId }, { deleted: true });
-  console.log(deletedComment);
-  console.log(deletedPost);
-
+  const deletedPost = await PostSchema.findOneAndDelete({ id: postId });
+  const deletedComment = await CommentSchema.findOneAndDelete({ id: postId });
   return { deletedComments: deletedComment, deletedPost: deletedPost };
 };
 

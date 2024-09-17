@@ -2,7 +2,6 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
-
 import { corsOptions } from './config/corsConfig';
 import { verifyToken } from './middleware/auth';
 import { errorHandler } from './middleware/errorHandler';
@@ -27,7 +26,6 @@ app.use('/api/auth', auth);
 app.use(verifyToken);
 app.use('/api/categories', categories); // EXAMPLE
 app.use('/api/posts', posts);
-
 // catch all non-existing routes
 app.use((req, res) => {
   res.status(404).json({ message: 'route not found' });
