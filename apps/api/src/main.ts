@@ -3,7 +3,8 @@ import express from 'express';
 import helmet from 'helmet';
 
 import { corsOptions } from './config/corsConfig';
-
+import { verifyToken } from './middleware/auth';
+import auth from './routes/auth';
 import categories from './routes/categories';
 import posts from './routes/posts';
 
@@ -16,6 +17,9 @@ app.use(express.json()); // middleware to parse json
 app.use(helmet()); // middleware to secure the app / remove x-powered-by
 app.use(cors(corsOptions)); // middleware to enable cors
 
+app.use('/api/auth', auth);
+
+app.use(verifyToken);
 app.use('/api/categories', categories); // EXAMPLE
 app.use('/api/posts', posts);
 
