@@ -8,9 +8,10 @@ import { errorHandler } from './middleware/errorHandler';
 import auth from './routes/auth';
 import categories from './routes/categories';
 import posts from './routes/posts';
-import dotenv from 'dotenv';
+import { envChecker } from './helpers/dotenvChecker';
 
-dotenv.config({ path: '.env.local' }); // Load environment variables from .env.local file so that we don't have them in the repo
+// Load environment variables from .env.local file so that we don't have them in the repo
+envChecker();
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
