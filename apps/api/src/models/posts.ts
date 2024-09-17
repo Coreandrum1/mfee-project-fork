@@ -19,18 +19,18 @@ initMongoRecords();
 
 // 1. Get all posts
 const getAllPosts = async () => {
-  return await PostSchema.find({});
+  return await PostSchema.find({}).populate(['comments', 'category']).sort({ createdAt: -1 });
 };
 
 // 2. Get posts by category
 const getPostsByCategory = async (category: string) => {
-  const postsByCategory = await PostSchema.find({ category: category }).populate(['comments', 'category']);
+  const postsByCategory = await PostSchema.find({ category: category }).populate(['comments', 'category']).sort({ createdAt: -1 });
   return postsByCategory;
 };
 
 // 3. Get post by id
 const getPostById = async (id: string) => {
-  const postById = await PostSchema.find({ id: id }).populate(['comments', 'category']);
+  const postById = await PostSchema.find({ _id: id }).populate(['comments', 'category']);
   return postById;
 };
 
@@ -39,7 +39,7 @@ const createPost = async (data: CuratedPost) => {
   // https://stackoverflow.com/questions/71185664/why-does-zod-make-all-my-schema-fields-optional
   // Zod make all my schema fields optional
   const newPost = {
-    id: Crypto.randomUUID(),
+    _id: Crypto.randomUUID(),
     comments: [],
     ...data
   };
@@ -50,30 +50,29 @@ const createPost = async (data: CuratedPost) => {
 // 5. Create post comment
 const createPostComment = async (postId: string, comment: { author: string; content: string }) => {
   const newComment = {
-    id: Crypto.randomUUID(),
+    _id: Crypto.randomUUID(),
     ...comment
   };
 
-  const foundPost = await PostSchema.findOne({ id: postId });
+  const foundPost = await PostSchema.findOne({ _id: postId });
   if (!foundPost) {
     throw new Error('Post not found');
   }
 
-  await CommentSchema.create(newComment);
-  await PostSchema.updateOne({ id: postId }, { $push: { comments: newComment.id } });
+  await PostSchema.updateOne({ _id: postId }, { $push: { comments: newComment._id } });
   return newComment;
 };
 
 // 6. Update post
 const updatePost = async (postId: string, data: Partial<Post>) => {
-  const updatedPost = await PostSchema.findOneAndUpdate({ id: postId }, data, { new: true });
+  const updatedPost = await PostSchema.findOneAndUpdate({ _id: postId }, data, { new: true });
   return updatedPost;
 };
 
 // 7. Delete post
 const deletePost = async (postId: string) => {
-  const deletedPost = await PostSchema.findOneAndDelete({ id: postId });
-  const deletedComment = await CommentSchema.findOneAndDelete({ id: postId });
+  const deletedPost = await PostSchema.findOneAndDelete({ _id: postId });
+  const deletedComment = await CommentSchema.findOneAndDelete({ _id: postId });
   return { deletedComments: deletedComment, deletedPost: deletedPost };
 };
 

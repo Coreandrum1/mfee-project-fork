@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 interface IPost extends mongoose.Document {
-  id: string;
+  _id: string;
   title: string;
   image: string;
   description: string;
@@ -11,29 +11,31 @@ interface IPost extends mongoose.Document {
 
 const postSchema = new mongoose.Schema(
   {
-    id: {
+    _id: {
       type: String,
-      required: [true, 'Property is required']
+      required: [true, 'id is required']
     },
     title: {
       type: String,
-      required: [true, 'Property is required']
+      required: [true, 'title is required']
     },
     image: {
       type: String,
-      required: [true, 'Property is required']
+      required: [true, 'image is required']
     },
     description: {
       type: String,
-      required: [true, 'Property is required']
+      required: [true, 'description is required']
     },
     category: {
-      type: String,
-      required: [true, 'Property is required']
+      type: mongoose.Schema.Types.String, // Foreign key
+      ref: 'Category',
+      required: [true, 'category is required']
     },
     comments: {
-      type: [String],
-      required: [true, 'Property is required']
+      type: [mongoose.Schema.Types.String], // Foreign key
+      ref: 'Comment',
+      required: [true, 'comments is required']
     }
   },
   {

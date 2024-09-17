@@ -1,5 +1,5 @@
 export interface Post {
-  id: string;
+  _id: string;
   title: string;
   image: string;
   description: string;
@@ -15,7 +15,7 @@ export interface CuratedPost {
 }
 
 export interface Comment {
-  id: string;
+  _id: string;
   author: string;
   content: string;
 }

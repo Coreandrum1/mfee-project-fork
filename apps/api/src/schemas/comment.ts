@@ -1,24 +1,24 @@
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
-interface IComment extends mongoose.Document {
-  id: string;
+interface IComment extends Document {
+  _id: string;
   author: string;
   content: string;
 }
 
 const commentSchema = new mongoose.Schema(
   {
-    id: {
+    _id: {
       type: String,
-      required: [true, 'Property is required']
+      required: [true, 'id is required']
     },
     author: {
       type: String,
-      required: [true, 'Property is required']
+      required: [true, 'Author is required']
     },
     content: {
       type: String,
-      required: [true, 'Property is required']
+      required: [true, 'Content is required']
     }
   },
   {
@@ -26,6 +26,6 @@ const commentSchema = new mongoose.Schema(
   }
 );
 
-const CommentSchema = mongoose.model<IComment>('Comment', commentSchema);
+const Comment = mongoose.model<IComment>('Comment', commentSchema);
 
-export default CommentSchema;
+export default Comment;
