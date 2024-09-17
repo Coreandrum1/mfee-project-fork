@@ -7,6 +7,9 @@ import { verifyToken } from './middleware/auth';
 import auth from './routes/auth';
 import categories from './routes/categories';
 import posts from './routes/posts';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '.env.local' }); // Load environment variables from .env.local file so that we don't have them in the repo
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
