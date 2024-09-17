@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import express from 'express';
 
 export const getCategory = (id: string) => {
@@ -6,7 +7,7 @@ export const getCategory = (id: string) => {
 
 const router = express.Router();
 // Initialize categories array to save data in memory
-const categories = [];
+const categories: any[] = [];
 
 // Get all categories
 router.get('/', (req, res) => {
