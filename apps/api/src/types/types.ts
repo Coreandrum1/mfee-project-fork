@@ -4,7 +4,14 @@ export interface Post {
   image: string;
   description: string;
   category: string;
-  comments: Comment[];
+  comments: string[];
+}
+
+export interface CuratedPost {
+  title: string;
+  image: string;
+  description: string;
+  category: string;
 }
 
 export interface Comment {

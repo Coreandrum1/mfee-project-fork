@@ -1,36 +1,19 @@
 import { Request, Response } from 'express';
-import { Post } from '../types/types';
-import Crypto from 'crypto';
 import { validateComment, validatePartialPost, validatePost } from '../helpers/validators';
-
-const POSTS: Post[] = [
-  //Example post
-  {
-    id: 'a47f5337-16f2-49a0-bc14-e97bb24b56a9',
-    title: 'Post Test Postman',
-    image:
-      'https://images.unsplash.com/photo-1556276797-5086e6b45ff9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800',
-    description: 'Description from Postman',
-    category: '1',
-    comments: [
-      {
-        id: Crypto.randomUUID(),
-        author: 'MFEE',
-        content: 'Good content'
-      }
-    ]
-  }
-];
+import postModel from '../models/posts';
 
 // 1. Get all posts
-const getPosts = (req: Request, res: Response) => {
-  res.status(200).json(POSTS);
+const getPosts = async (req: Request, res: Response) => {
+  const posts = await postModel.getAllPosts();
+  console.log(posts);
+  res.status(200).json(posts);
 };
 
 // 2. Get posts by category
-const getPostsByCategory = (req: Request, res: Response) => {
+const getPostsByCategory = async (req: Request, res: Response) => {
   const { category } = req.params;
-  const posts = POSTS.filter((p) => p.category === category);
+  const posts = await postModel.getPostsByCategory(category);
+
   if (!posts.length) {
     return res.status(404).json({ message: `Posts not found for category ${category}` });
   }
@@ -38,90 +21,54 @@ const getPostsByCategory = (req: Request, res: Response) => {
 };
 
 // 3. Get post by id
-const getPostById = (req: Request, res: Response) => {
+const getPostById = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const post = POSTS.find((p) => p.id === id);
+  const post = await postModel.getPostById(id);
 
   if (!post) {
     return res.status(404).json({ message: 'Post not found' });
   }
-
   res.status(200).json(post);
 };
 
 // 4. Create post
-const createPost = (req: Request, res: Response) => {
+const createPost = async (req: Request, res: Response) => {
   const validationResult = validatePost(req.body);
   if (validationResult.error) {
     return res.status(400).json({ message: JSON.parse(validationResult.error.message) });
   }
-
-  // https://stackoverflow.com/questions/71185664/why-does-zod-make-all-my-schema-fields-optional
-  // Zod make all my schema fields optional
-  const newPost = {
-    id: Crypto.randomUUID(),
-    comments: [],
-    ...validationResult.data
-  };
-
-  POSTS.push(newPost);
-
+  const newPost = await postModel.createPost(validationResult.data);
   res.status(201).json(newPost);
 };
 
 // 5. Create post comment
-const createPostComment = (req: Request, res: Response) => {
+const createPostComment = async (req: Request, res: Response) => {
   const validationResult = validateComment(req.body);
   if (validationResult.error) {
     return res.status(400).json({ message: JSON.parse(validationResult.error.message) });
   }
-
   const { id } = req.params;
-  const postIndex = POSTS.findIndex((p) => p.id === id);
-  if (postIndex === -1) {
-    return res.status(404).json({ message: 'Cannot find post to add comment' });
-  }
-
-  const newComment = {
-    id: Crypto.randomUUID(),
-    ...validationResult.data
-  };
-
-  POSTS[postIndex].comments.push(newComment);
-
+  const newComment = await postModel.createPostComment(id, validationResult.data);
   res.status(201).json(newComment);
 };
 
 // 6. Update post
-const updatePost = (req: Request, res: Response) => {
+const updatePost = async (req: Request, res: Response) => {
   const validationResult = validatePartialPost(req.body);
   if (validationResult.error) {
     return res.status(400).json({ message: JSON.parse(validationResult.error.message) });
   }
-
   const { id } = req.params;
-  const postIndex = POSTS.findIndex((p) => p.id === id);
-  if (postIndex === -1) {
-    return res.status(404).json({ message: 'Post not found' });
-  }
-
-  const updatedPost = { ...POSTS[postIndex], ...validationResult.data };
-  POSTS[postIndex] = updatedPost;
-
+  const updatedPost = await postModel.updatePost(id, validationResult.data);
   res.status(200).json(updatedPost);
 };
 
 // 7. Delete post
-const deletePost = (req: Request, res: Response) => {
+const deletePost = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const postIndex = POSTS.findIndex((p) => p.id === id);
-  if (postIndex === -1) {
-    return res.status(404).json({ message: 'Post not found' });
-  }
-
-  POSTS.splice(postIndex, 1);
-
-  res.status(204).send();
+  const deletedPost = postModel.deletePost(id);
+  console.log(deletedPost);
+  res.status(204).send({ message: `Post deleted successfully` });
 };
 
 export default {

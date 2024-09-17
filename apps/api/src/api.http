@@ -1,26 +1,44 @@
-### CATEGORIES
+// ////////// //
+// CATEGORIES //
+// ////////// //
 
-### GET categories
+### GET CATEGORIES
 GET http://localhost:3000/api/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1mZWUtdGVzdCIsImlhdCI6MTcyNjU2NjgzOCwiZXhwIjoxNzI2NTY3NzM4fQ.UFDSTtgW0Xfb08SC4We2jihcCfq7eKTgzgcOsg4vVvs
 
-### GET not valid route
+### GET NOT VALID ROUTE
 GET http://localhost:3000/api/not-valid-route
 
-### POST category
-POST http://localhost:3000/api/categories
+### GET CATEGORIES BY ID
+POST http://localhost:3000/api/categories/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1mZWUtdGVzdCIsImlhdCI6MTcyNjU2NjgzOCwiZXhwIjoxNzI2NTY3NzM4fQ.UFDSTtgW0Xfb08SC4We2jihcCfq7eKTgzgcOsg4vVvs
 Content-Type: application/json
+
 {
   "name": "Other"
 }
 
-### POSTS
+// ///// //
+// POSTS //
+// ///// //
 
-### GET posts
+### 1. GET ALL POSTS
 GET http://localhost:3000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1mZWUtdGVzdCIsImlhdCI6MTcyNjU2NjgzOCwiZXhwIjoxNzI2NTY3NzM4fQ.UFDSTtgW0Xfb08SC4We2jihcCfq7eKTgzgcOsg4vVvs
 
-### POST post
+### 2. GET POSTS BY CATEGORY
+GET http://localhost:3000/api/posts/category/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1mZWUtdGVzdCIsImlhdCI6MTcyNjU2NjgzOCwiZXhwIjoxNzI2NTY3NzM4fQ.UFDSTtgW0Xfb08SC4We2jihcCfq7eKTgzgcOsg4vVvs
+
+### 3. GET POST BY ID
+GET http://localhost:3000/api/posts/a47f5337-16f2-49a0-bc14-e97bb24b56a9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1mZWUtdGVzdCIsImlhdCI6MTcyNjU2NjgzOCwiZXhwIjoxNzI2NTY3NzM4fQ.UFDSTtgW0Xfb08SC4We2jihcCfq7eKTgzgcOsg4vVvs
+
+### 4. CREATE POST
 POST http://localhost:3000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1mZWUtdGVzdCIsImlhdCI6MTcyNjU2NjgzOCwiZXhwIjoxNzI2NTY3NzM4fQ.UFDSTtgW0Xfb08SC4We2jihcCfq7eKTgzgcOsg4vVvs
 Content-Type: application/json
+
 {
   "title": "Post Test Postman",
   "image": "https://images.unsplash.com/photo-1556276797-5086e6b45ff9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800",
@@ -28,28 +46,33 @@ Content-Type: application/json
   "category": "1"
 }
 
-### POST post comment
+### 5. CREATE POST COMMENT
 POST http://localhost:3000/api/posts/a47f5337-16f2-49a0-bc14-e97bb24b56a9/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1mZWUtdGVzdCIsImlhdCI6MTcyNjU2NjgzOCwiZXhwIjoxNzI2NTY3NzM4fQ.UFDSTtgW0Xfb08SC4We2jihcCfq7eKTgzgcOsg4vVvs
 Content-Type: application/json
+
 {
   "author": "MFEE",
   "content": "Good content"
 }
 
-### PATCH post
+### 6. UPDATE POST
 PATCH http://localhost:3000/api/posts/a47f5337-16f2-49a0-bc14-e97bb24b56a9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1mZWUtdGVzdCIsImlhdCI6MTcyNjU2NjgzOCwiZXhwIjoxNzI2NTY3NzM4fQ.UFDSTtgW0Xfb08SC4We2jihcCfq7eKTgzgcOsg4vVvs
 Content-Type: application/json
 
 {
-  "title": "Test Postman New",
-  "description": "Description from Postman"
+  "title": "Test Postman NEW",
+  "description": "Description NEW"
 }
 
-### DELETE post
+### 7. DELETE POST
 DELETE http://localhost:3000/api/posts/a47f5337-16f2-49a0-bc14-e97bb24b56a9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1mZWUtdGVzdCIsImlhdCI6MTcyNjU2NjgzOCwiZXhwIjoxNzI2NTY3NzM4fQ.UFDSTtgW0Xfb08SC4We2jihcCfq7eKTgzgcOsg4vVvs
 
-
-// AUTH
+// //// //
+// AUTH //
+// //// //
 
 ### REGISTER
 POST http://localhost:3000/api/auth/register
