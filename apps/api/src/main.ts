@@ -4,6 +4,7 @@ import helmet from 'helmet';
 
 import { corsOptions } from './config/corsConfig';
 import { verifyToken } from './middleware/auth';
+import { errorHandler } from './middleware/errorHandler';
 import auth from './routes/auth';
 import categories from './routes/categories';
 import posts from './routes/posts';
@@ -30,6 +31,8 @@ app.use('/api/posts', posts);
 app.use((req, res) => {
   res.status(404).json({ message: 'route not found' });
 });
+
+app.use(errorHandler);
 
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);
