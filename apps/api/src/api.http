@@ -1,28 +1,26 @@
+### CATEGORIES
+
+### GET categories
 GET http://localhost:3000/api/categories
 
-###
+### GET not valid route
+GET http://localhost:3000/api/not-valid-route
 
-GET http://localhost:3000/api/note-valid-route
-
-###
-
+### POST category
 POST http://localhost:3000/api/categories
 Content-Type: application/json
-
 {
   "name": "Other"
 }
 
+### POSTS
 
-###
-
+### GET posts
 GET http://localhost:3000/api/posts
 
-###
-
+### POST post
 POST http://localhost:3000/api/posts
 Content-Type: application/json
-
 {
   "title": "Post Test Postman",
   "image": "https://images.unsplash.com/photo-1556276797-5086e6b45ff9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800",
@@ -30,17 +28,15 @@ Content-Type: application/json
   "category": "1"
 }
 
-###
+### POST post comment
 POST http://localhost:3000/api/posts/a47f5337-16f2-49a0-bc14-e97bb24b56a9/comments
 Content-Type: application/json
-
 {
   "author": "MFEE",
   "content": "Good content"
 }
 
-###
-
+### PATCH post
 PATCH http://localhost:3000/api/posts/a47f5337-16f2-49a0-bc14-e97bb24b56a9
 Content-Type: application/json
 
@@ -49,7 +45,5 @@ Content-Type: application/json
   "description": "Description from Postman"
 }
 
-###
+### DELETE post
 DELETE http://localhost:3000/api/posts/a47f5337-16f2-49a0-bc14-e97bb24b56a9
-
-###

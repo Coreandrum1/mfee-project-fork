@@ -4,8 +4,6 @@ import express from 'express';
 import categoryController from '../controllers/category';
 
 const router = express.Router();
-// Initialize categories array to save data in memory
-const categories: any[] = [];
 
 // Get all categories
 router.get('/', categoryController.getCategories);
