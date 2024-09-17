@@ -71,6 +71,10 @@
 - **Extra**
   - Remove post comments from database when you delete the post
 
+### Session 02
+
+- Refactor the code from last session to add a post controller
+
 ## How to
 
 ### Run postman collection
