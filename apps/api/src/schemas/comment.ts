@@ -1,17 +1,12 @@
 import mongoose, { Document } from 'mongoose';
 
 interface IComment extends Document {
-  _id: string;
   author: string;
   content: string;
 }
 
 const commentSchema = new mongoose.Schema(
   {
-    _id: {
-      type: String,
-      required: [true, 'id is required']
-    },
     author: {
       type: String,
       required: [true, 'Author is required']
@@ -26,6 +21,6 @@ const commentSchema = new mongoose.Schema(
   }
 );
 
-const Comment = mongoose.model<IComment>('Comment', commentSchema);
+const CommentDocument = mongoose.model<IComment>('Comment', commentSchema);
 
-export default Comment;
+export default CommentDocument;

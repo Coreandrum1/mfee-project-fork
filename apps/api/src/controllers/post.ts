@@ -13,10 +13,8 @@ const getPosts = asyncErrorHandler(async (req: Request, res: Response) => {
 const getPostsByCategory = asyncErrorHandler(async (req: Request, res: Response) => {
   const { category } = req.params;
 
+  console.log('category', category);
   const posts = await postModel.getPostsByCategory(category);
-  if (!posts.length) {
-    return res.status(404).json({ message: `Posts not found for category ${category}` });
-  }
   res.status(200).json(posts);
 });
 
@@ -44,7 +42,6 @@ const createPost = asyncErrorHandler(async (req: Request, res: Response) => {
 // 5. Create post comment
 const createPostComment = asyncErrorHandler(async (req: Request, res: Response) => {
   const validationResult = validateComment(req.body);
-  console.log('validationResult', validationResult);
   if (validationResult.error) {
     return res.status(400).json({ message: JSON.parse(validationResult.error.message) });
   }
@@ -68,8 +65,7 @@ const updatePost = asyncErrorHandler(async (req: Request, res: Response) => {
 const deletePost = asyncErrorHandler(async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  const deletedPost = await postModel.deletePost(id);
-  console.log(deletedPost);
+  await postModel.deletePost(id);
   res.status(204).send({ message: `Post deleted successfully` });
 });
 

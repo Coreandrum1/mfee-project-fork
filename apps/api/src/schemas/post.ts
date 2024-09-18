@@ -1,21 +1,15 @@
 import mongoose from 'mongoose';
 
 interface IPost extends mongoose.Document {
-  _id: string;
   title: string;
   image: string;
   description: string;
-  category: string;
-  comments: string[];
+  category: mongoose.Schema.Types.ObjectId;
+  comments: mongoose.Schema.Types.ObjectId[];
 }
 
 const postSchema = new mongoose.Schema(
   {
-    _id: {
-      // explicitly set _id to string
-      type: String,
-      required: [true, 'id is required']
-    },
     title: {
       type: String,
       required: [true, 'title is required']
@@ -29,12 +23,12 @@ const postSchema = new mongoose.Schema(
       required: [true, 'description is required']
     },
     category: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Category',
       required: [true, 'category is required']
     },
     comments: {
-      type: [String], // Id values are being handled by Crypto.randomUUID(), not MongoDB ObjectId
+      type: [mongoose.Schema.Types.ObjectId],
       ref: 'Comment',
       required: [true, 'comments is required']
     }
@@ -44,6 +38,6 @@ const postSchema = new mongoose.Schema(
   }
 );
 
-const PostSchema = mongoose.model<IPost>('Post', postSchema);
+const PostDocument = mongoose.model<IPost>('Post', postSchema);
 
-export default PostSchema;
+export default PostDocument;
