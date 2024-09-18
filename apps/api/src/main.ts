@@ -9,6 +9,7 @@ import auth from './routes/auth';
 import categories from './routes/categories';
 import posts from './routes/posts';
 import { envChecker } from './helpers/dotenvChecker';
+import { initMongoRecords } from './models/posts';
 
 // Load environment variables from .env.local file so that we don't have them in the repo
 envChecker();
@@ -38,7 +39,7 @@ mongoose
   .connect(`${process.env.MONGO_URL}`)
   .then(() => {
     console.log('Connected to MongoDB');
-
+    initMongoRecords(); // Initialize a few records for testing
     app.listen(port, host, () => {
       console.log(`[ ready ] http://${host}:${port}`);
     });

@@ -1,9 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 
-// Error handler wrapper for async functions
-const asyncHandler =
-  (fn: (req: Request, res: Response, next: NextFunction) => Promise<void>) => (req: Request, res: Response, next: NextFunction) => {
-    Promise.resolve(fn(req, res, next)).catch(next); // Catch errors and pass them to next()
-  };
+const UNKNOWN_ERROR_MESSAGE = 'An unknown error occurred';
 
-export default asyncHandler;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const asyncErrorHandler = (fn: (req: Request, res: Response, next: NextFunction) => Promise<void> | Promise<any>) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    Promise.resolve(fn(req, res, next)).catch((error) => {
+      const errorMessage = error instanceof Error ? error.message : UNKNOWN_ERROR_MESSAGE;
+      res.status(500).json({ message: errorMessage });
+    });
+  };
+};

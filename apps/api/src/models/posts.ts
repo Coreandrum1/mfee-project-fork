@@ -4,18 +4,17 @@ import PostSchema from '../schemas/post';
 import Category from './category';
 import CommentSchema from '../schemas/comment';
 import { CATEGORIES, COMMENTS, POSTS } from '../data/initialData';
+import mongoose from 'mongoose';
 
 //Initialize the database records so we can test
-const initMongoRecords = async () => {
-  await PostSchema.deleteMany({});
-  await Category.deleteMany({});
-  await CommentSchema.deleteMany({});
-  await PostSchema.create(POSTS);
-  await Category.create(CATEGORIES);
-  await CommentSchema.create(COMMENTS);
+export const initMongoRecords = async () => {
+  await mongoose.connection.db.dropCollection('posts');
+  await mongoose.connection.db.dropCollection('categories');
+  await mongoose.connection.db.dropCollection('comments');
+  await PostSchema.insertMany(POSTS);
+  await Category.insertMany(CATEGORIES);
+  await CommentSchema.insertMany(COMMENTS);
 };
-
-initMongoRecords();
 
 // 1. Get all posts
 const getAllPosts = async () => {
@@ -54,12 +53,17 @@ const createPostComment = async (postId: string, comment: { author: string; cont
     ...comment
   };
 
-  const foundPost = await PostSchema.findOne({ _id: postId });
+  const foundPost = await PostSchema.findById(postId);
   if (!foundPost) {
     throw new Error('Post not found');
   }
+  const createdComment = await CommentSchema.create(newComment);
 
-  await PostSchema.updateOne({ _id: postId }, { $push: { comments: newComment._id } });
+  if (!createdComment) {
+    throw new Error('Comment not created');
+  }
+
+  await PostSchema.updateOne({ _id: postId }, { $push: { comments: newComment._id } }, { new: true });
   return newComment;
 };
 

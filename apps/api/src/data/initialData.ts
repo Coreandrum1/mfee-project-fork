@@ -7,7 +7,7 @@ const POSTS: Post[] = [
     image:
       'https://images.unsplash.com/photo-1556276797-5086e6b45ff9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=800',
     description: 'Description from Postman',
-    category: '1',
+    category: 'cat_1',
     comments: ['a47f5337-16f2-49a0-bc14-e97bb24b56a1']
   }
 ];
@@ -15,18 +15,18 @@ const POSTS: Post[] = [
 const COMMENTS: Comment[] = [
   {
     _id: 'a47f5337-16f2-49a0-bc14-e97bb24b56a1',
-    author: 'MFEE',
-    content: 'Good content'
+    author: 'John Doe',
+    content: 'Great post!'
   }
 ];
 
 const CATEGORIES = [
   {
-    _id: '1',
+    _id: 'cat_1',
     name: 'Other'
   },
   {
-    _id: '2',
+    _id: 'cat_2',
     name: 'React'
   }
 ];
